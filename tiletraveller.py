@@ -1,3 +1,6 @@
+#1. Technically implementation 2 as at that point you know what to do, but splitting it up into many smaller problems is definetly easier as I had problem fitting everything into a loop in part1 and alot of repeat code due to that
+#2. Implementation 2 due to the fact everything is split off and ordered, you can see clearly what each segment does and what it returns. In implementation 1 it was kind of a mess.
+#3. None really, just made it easier to read and understand the functionality is pretty much exactly the same.
 #Tiletraveller
 #Travel within 3x3 grid with several paths walled off
 #As for possible input if starting in spot 1.1 only one path is available
