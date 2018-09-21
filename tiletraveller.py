@@ -12,9 +12,32 @@ MAXY = 3
 victory = False
 currentpositionx = 1
 currentpositiony = 1
-validmoves = {'n'}
+validmoves = ['n','s','w','e']
 validmoveslength = len(validmoves)
 print(validmoveslength)
+
+
+mainstring = str("You can travel: ")
+counter = 0
+for chars in validmoves:
+    if counter >= 1 and counter < len(validmoves):
+        mainstring = mainstring + " or "
+    if chars == 'n':
+        mainstring = mainstring + "(N)orth"
+    elif chars == 's':
+        mainstring = mainstring + "(S)outh"
+    elif chars == 'e':
+        mainstring = mainstring + "(E)ast"
+    elif chars == 'w':
+        mainstring = mainstring + "(W)est"
+    counter += 1
+mainstring = mainstring + "."
+
+print(mainstring)
+mainstring = str("You can travel: ")
+        
+
+
 
 move = input("Direction: ")
 move = move.lower()
@@ -38,20 +61,20 @@ while victory == False:
     
 
 if currentpositionx == 1 and currentpositiony == 1:
-    validmoves = {'n'}
+    validmoves = ['n']
 if currentpositionx == 1 and currentpositiony == 2:
-    validmoves = {'n','s','e'}
+    validmoves = ['n','s','e']
 if currentpositionx == 1 and currentpositiony == 3:
-    validmoves = {'s', 'e'}
+    validmoves =  ['s', 'e']
 if currentpositionx == 2 and currentpositiony == 1:
-    validmoves = {'n'}
+    validmoves = ['n']
 if currentpositionx == 2 and currentpositiony == 2:
-    validmoves = {'w','s'}
+    validmoves = ['w','s']
 if currentpositionx == 2 and currentpositiony == 3:
-    validmoves = {'w','e'}
+    validmoves = ['w','e']
 if currentpositionx == 3 and currentpositiony == 1:
     victory = True
 if currentpositionx == 3 and currentpositiony == 2:
-    validmoves = {'n', 's'}
+    validmoves = ['n', 's']
 if currentpositionx == 3 and currentpositiony == 3:
-    validmoves = {'w', 's'}
+    validmoves = ['w', 's']
