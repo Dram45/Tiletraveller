@@ -24,10 +24,10 @@ while victory == False:
             mainstring = mainstring + " or "
         if chars == 'n':
             mainstring = mainstring + "(N)orth"
-        elif chars == 's':
-            mainstring = mainstring + "(S)outh"
         elif chars == 'e':
             mainstring = mainstring + "(E)ast"
+        elif chars == 's':
+            mainstring = mainstring + "(S)outh"
         elif chars == 'w':
             mainstring = mainstring + "(W)est"
         counter += 1
