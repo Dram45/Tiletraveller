@@ -5,18 +5,11 @@
 #if move is valid, move there and show new options.
 #gitrepository = https://github.com/Dram45/Tiletraveller.git
 
-victory = False
-currentpositionx = 1
-currentpositiony = 1
-validmoves = ['n']
-
-
-
-while victory == False:
+def printvalidmoves(l1):
     mainstring = str("You can travel: ")
     counter = 0
-    for chars in validmoves:
-        if counter >= 1 and counter < len(validmoves):
+    for chars in l1:
+        if counter >= 1 and counter < len(l1):
             mainstring = mainstring + " or "
         if chars == 'n':
             mainstring = mainstring + "(N)orth"
@@ -31,11 +24,11 @@ while victory == False:
     mainstring = mainstring + "."
 
     print(mainstring)
-    mainstring = str("You can travel: ")
+    return
 
+def move(l1):
     move = input("Direction: ")
     move = move.lower()
-
     allowedmove = False
     while allowedmove == False:
         if move not in validmoves:
@@ -44,34 +37,73 @@ while victory == False:
             move = move.lower()
         if move in validmoves:
             allowedmove = True
+    return move
+def changepos(m,x,y):
 
-    if move == 'n':
-        currentpositionx += 1
-    if move == 's':
-        currentpositionx -= 1
-    if move == 'w':
-        currentpositiony -= 1
-    if move == 'e':
-        currentpositiony += 1    
+    if m == 'n':
+        x += 1
+        return x, y
+    if m == 's':
+        x -= 1
+        return x,y
+    if m == 'w':
+        y -= 1
+        return x,y
+    if m == 'e':
+        y += 1
+        return x,y
+    
 
-    if currentpositiony == 1 and currentpositiony == 1:
-        validmoves = ['n']
-    if currentpositiony == 1 and currentpositionx == 2:
-        validmoves = ['n','e','s']
-    if currentpositiony == 1 and currentpositionx == 3:
-        validmoves =  ['e', 's']
-    if currentpositiony == 2 and currentpositionx == 1:
-        validmoves = ['n']
-    if currentpositiony == 2 and currentpositionx == 2:
-        validmoves = ['s','w']
-    if currentpositiony == 2 and currentpositionx == 3:
-        validmoves = ['e','w']
-    if currentpositiony == 3 and currentpositionx == 1:
-        victory = True
-        break
-    if currentpositiony == 3 and currentpositionx == 2:
-        validmoves = ['n', 's']
-    if currentpositiony == 3 and currentpositionx == 3:
-        validmoves = ['s', 'w']
+def checkwalls(s1, s2):
+    
+    if s2 == 1 and s1 == 1:
+        valid = ['n']
+        return valid
+    if s2 == 1 and s1 == 2:
+        valid = ['n','e','s']
+        return valid
+    if s2 == 1 and s1 == 3:
+        valid =  ['e', 's']
+        return valid
+    if s2 == 2 and s1 == 1:
+        valid = ['n']
+        return valid
+    if s2 == 2 and s1 == 2:
+        valid = ['s','w']
+        return valid
+    if s2 == 2 and s1 == 3:
+        valid = ['e','w']
+        return valid
+    if s2 == 3 and s1 == 1:
+        valid = ['Victory']
+        return valid
+    if s2 == 3 and s1 == 2:
+        valid = ['n', 's']
+        return valid
+    if s2 == 3 and s1 == 3:
+        valid = ['s', 'w']
+        return valid
+
+def checkvictory(tf):
+    if 'Victory' in tf:
+        return True
+    return False
+
+
+victory = False
+currentpositionx = 1
+currentpositiony = 1
+validmoves = ['n']
+
+while victory == False:
+   
+    printvalidmoves(validmoves)
+    movement = move(validmoves)
+    currentpositionx, currentpositiony = changepos(movement,currentpositionx,currentpositiony)
+    validmoves = checkwalls(currentpositionx, currentpositiony)
+    victory = checkvictory(validmoves)
+
+    
+
 
 print("Victory!")
