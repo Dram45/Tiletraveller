@@ -5,10 +5,6 @@
 #if move is valid, move there and show new options.
 #gitrepository = https://github.com/Dram45/Tiletraveller.git
 
-MINX = 1
-MAXX = 3
-MINY = 1 
-MAXY = 3
 victory = False
 currentpositionx = 1
 currentpositiony = 1
@@ -28,6 +24,7 @@ while victory == False:
             mainstring = mainstring + "(E)ast"
         elif chars == 's':
             mainstring = mainstring + "(S)outh"
+
         elif chars == 'w':
             mainstring = mainstring + "(W)est"
         counter += 1
@@ -42,8 +39,9 @@ while victory == False:
     allowedmove = False
     while allowedmove == False:
         if move not in validmoves:
-            print("Not a valid direction")
+            print("Not a valid direction!")
             move = input("Direction: ")
+            move = move.lower()
         if move in validmoves:
             allowedmove = True
 
@@ -59,21 +57,21 @@ while victory == False:
     if currentpositiony == 1 and currentpositiony == 1:
         validmoves = ['n']
     if currentpositiony == 1 and currentpositionx == 2:
-        validmoves = ['n','s','e']
+        validmoves = ['n','e','s']
     if currentpositiony == 1 and currentpositionx == 3:
-        validmoves =  ['s', 'e']
+        validmoves =  ['e', 's']
     if currentpositiony == 2 and currentpositionx == 1:
         validmoves = ['n']
     if currentpositiony == 2 and currentpositionx == 2:
-        validmoves = ['w','s']
+        validmoves = ['s','w']
     if currentpositiony == 2 and currentpositionx == 3:
-        validmoves = ['w','e']
+        validmoves = ['e','w']
     if currentpositiony == 3 and currentpositionx == 1:
         victory = True
         break
     if currentpositiony == 3 and currentpositionx == 2:
         validmoves = ['n', 's']
     if currentpositiony == 3 and currentpositionx == 3:
-        validmoves = ['w', 's']
+        validmoves = ['s', 'w']
 
 print("Victory!")
